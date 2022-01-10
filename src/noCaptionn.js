@@ -1,6 +1,6 @@
 import React from "react";
 
-class App extends React.Component {
+class NoCapture extends React.Component {
   parentRef;
   childRef;
   constructor(props) {
@@ -18,7 +18,7 @@ class App extends React.Component {
     );
     this.parentRef.current?.addEventListener(
       "click",
-      () => {
+      (e) => {
         console.log("原生事件：父元素 DOM 事件捕获---");
       },
       true
@@ -39,8 +39,9 @@ class App extends React.Component {
     );
     this.parentRef.current?.addEventListener(
       "click",
-      () => {
+      (e) => {
         console.log("原生事件：父元素 DOM 事件冒泡！");
+        // e.stopPropagation();
       },
       false
     );
@@ -52,14 +53,18 @@ class App extends React.Component {
       false
     );
   }
-  parentClickFun = () => {
+  parentClickFun = (e) => {
     console.log("React 事件：父元素事件冒泡！");
+    // e.preventDefault();
+    e.nativeEvent.stopImmediatePropagation();
   };
-  parentCapture = () => {
+  parentCapture = (e) => {
+    // e.stopPropagation();
     console.log("React 事件：父元素事件捕获-----");
   };
-  childClickFun = () => {
+  childClickFun = (e) => {
     console.log("React 事件：子元素事件冒泡！");
+    // e.preventDefault();
   };
   childCapture = () => {
     console.log("React 事件：子元素事件捕获-----");
@@ -82,4 +87,4 @@ class App extends React.Component {
     );
   }
 }
-export default App;
+export default NoCapture;
