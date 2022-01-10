@@ -11,9 +11,9 @@ class StopBubbling extends React.Component {
   };
 
   handleBodyClick = (e) => {
-    // if (e.target && e.target === document.querySelector("#inner")) {
-    //   return;
-    // }
+    if (e.target && e.target === document.querySelector("#inner")) {
+      return;
+    }
     console.log("handleBodyClick: ");
   };
 
@@ -27,7 +27,7 @@ class StopBubbling extends React.Component {
 
   handleClickTestBox3 = (e) => {
     // 阻止合成事件的冒泡
-    // e.stopPropagation();
+    e.stopPropagation();
     // 阻止与原生事件的冒泡
     e.nativeEvent.stopImmediatePropagation();
     console.warn("handleClickTestBox3: ");
