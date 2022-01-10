@@ -7,22 +7,22 @@ class StopBubbling extends React.Component {
   }
 
   handleDocumentClick = (e) => {
-    console.log("handleDocumentClick: ");
+    console.log("handleDocumentClick！ ");
   };
 
   handleBodyClick = (e) => {
     if (e.target && e.target === document.querySelector("#inner")) {
       return;
     }
-    console.log("handleBodyClick: ");
+    console.log("handleBodyClick！");
   };
 
   handleClickTestBox = (e) => {
-    console.warn("handleClickTestBox: ");
+    console.warn("handleClickTestBox！");
   };
 
   handleClickTestBox2 = (e) => {
-    console.warn("handleClickTestBox2: ");
+    console.warn("handleClickTestBox2！");
   };
 
   handleClickTestBox3 = (e) => {
@@ -30,7 +30,7 @@ class StopBubbling extends React.Component {
     e.stopPropagation();
     // 阻止与原生事件的冒泡
     e.nativeEvent.stopImmediatePropagation();
-    console.warn("handleClickTestBox3: ");
+    console.warn("handleClickTestBox3！");
   };
 
   render() {
@@ -49,9 +49,10 @@ class StopBubbling extends React.Component {
           <div
             id="inner"
             onClick={this.handleClickTestBox3}
-            style={{ background: "blue", margin: "10px" }}
+            style={{ background: "yellow", margin: "10px" }}
           >
-            Box3
+            Box3 
+
           </div>
         </div>
       </div>
